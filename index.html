@@ -3,295 +3,222 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TSTC | Bryan, TX Aerospace Technology Center</title>
+    <title>TSTC | Bryan Aerospace Technology Center</title>
     <style>
         :root {
             --nws-blue: #003366;
-            --nws-light-bg: #f0f0f0;
-            --nws-border: #cccccc;
-            --space-black: #05070a;
-            --accent-gold: #ffcc00; 
+            --nws-light: #e6eff7;
+            --nws-border: #999;
+            --nasa-red: #cc0000;
         }
 
         body {
             font-family: Arial, Helvetica, sans-serif;
+            margin: 0; padding: 0;
+            background: #fff;
+            color: #000;
             line-height: 1.4;
-            color: #333;
-            background-color: white;
-            margin: 0;
-            padding: 0;
         }
 
-        .gov-banner {
+        /* Top Agency Bar */
+        .top-bar {
             background: #000;
-            color: white;
-            font-size: 11px;
+            color: #fff;
             padding: 5px 20px;
+            font-size: 11px;
+            font-weight: bold;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            border-bottom: 1px solid #333;
         }
 
         header {
-            background-color: var(--nws-blue);
-            color: white;
-            padding: 20px;
-            border-bottom: 4px solid var(--accent-gold);
+            padding: 15px 20px;
+            border-bottom: 5px solid var(--nws-blue);
             display: flex;
-            align-items: center;
             justify-content: space-between;
+            align-items: center;
         }
 
-        .header-main h1 {
-            margin: 0;
-            font-size: 1.8em;
-            font-weight: bold;
-            letter-spacing: -0.5px;
-        }
+        .logo h1 { margin: 0; color: var(--nws-blue); font-size: 26px; }
+        .logo span { font-size: 14px; color: #555; display: block; }
 
+        /* The "Warning" Bar */
         .disclaimer {
-            background: #ffeb3b;
-            color: #000;
-            padding: 5px;
+            background: #ffff00;
+            border-bottom: 1px solid var(--nws-border);
             text-align: center;
+            padding: 5px;
+            font-size: 12px;
             font-weight: bold;
-            font-size: 0.75em;
-            text-transform: uppercase;
         }
 
-        /* Navigation Bar */
         nav {
-            background: #f7f7f7;
-            border-bottom: 1px solid var(--nws-border);
+            background: var(--nws-blue);
             padding: 0 20px;
+            display: flex;
         }
 
         nav button {
             background: none;
             border: none;
-            padding: 12px 20px;
+            color: white;
+            padding: 12px 15px;
             font-weight: bold;
-            color: var(--nws-blue);
             cursor: pointer;
-            text-transform: uppercase;
-            font-size: 12px;
+            font-size: 13px;
         }
 
-        nav button.active {
-            background: var(--nws-blue);
-            color: white;
-        }
+        nav button:hover { background: #004488; }
+        nav button.active { background: #fff; color: var(--nws-blue); }
 
         .container {
-            display: grid;
-            grid-template-columns: 3fr 1fr; 
             max-width: 1200px;
             margin: 20px auto;
-            gap: 20px;
+            /* Removed sidebar column from grid */
+            display: block; 
             padding: 0 15px;
         }
 
-        .main-content {
-            background: white;
+        /* Main Content Area */
+        .page-content {
+            border: 1px solid var(--nws-blue);
+            min-height: 400px;
         }
-
-        .sidebar {
-            background: #f7f7f7;
-            border: 1px solid var(--nws-border);
-            padding: 15px;
-            height: fit-content;
-        }
-
-        .section-header {
+        .content-hdr {
             background: var(--nws-blue);
             color: white;
-            padding: 8px 12px;
-            font-size: 1.1em;
+            padding: 8px 15px;
             font-weight: bold;
-            margin-bottom: 15px;
+            font-size: 15px;
         }
+        .inner-content { padding: 20px; }
 
-        .content-box {
-            border: 1px solid var(--nws-border);
-            margin-bottom: 20px;
-            background: #fff;
-        }
-
-        .inner-padding {
-            padding: 15px;
-        }
-
-        /* Pages - Hidden by default */
+        /* Hidden pages by default */
         .page { display: none; }
         .page.active { display: block; }
 
-        table.leadership-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.9em;
-        }
-
-        .leadership-table th, .leadership-table td {
-            text-align: left;
-            padding: 10px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .leadership-table th {
-            background: #f2f2f2;
-            color: #555;
-            text-transform: uppercase;
-            font-size: 0.8em;
-        }
-
-        .status-badge {
-            display: inline-block;
-            background: #238636;
-            color: white;
-            padding: 2px 8px;
-            border-radius: 3px;
-            font-size: 10px;
-            font-family: 'Courier New', Courier, monospace;
-        }
-
-        .contact-btn {
-            display: block;
-            background: var(--nws-blue);
-            color: white;
-            padding: 10px;
-            text-align: center;
-            text-decoration: none;
-            font-weight: bold;
-            margin-top: 10px;
-            border-radius: 2px;
-        }
+        /* Data Table */
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th { background: #f0f0f0; text-align: left; border: 1px solid var(--nws-border); padding: 8px; font-size: 13px; }
+        td { border: 1px solid var(--nws-border); padding: 8px; font-size: 13px; }
 
         footer {
-            background: #333;
-            color: #ccc;
-            padding: 30px;
+            background: var(--nws-light);
+            border-top: 1px solid var(--nws-border);
+            padding: 20px;
             text-align: center;
-            font-size: 0.8em;
-            margin-top: 50px;
+            font-size: 11px;
+            margin-top: 40px;
         }
 
-        .telemetry-font {
-            font-family: 'Courier New', Courier, monospace;
-            font-weight: bold;
-            color: #006400;
+        .contact-card {
+            border: 1px solid var(--nasa-red);
+            padding: 15px;
+            background: #fffcfc;
         }
-
     </style>
 </head>
 <body>
 
-<div class="gov-banner">
-    Official Portal: TSTC Aerospace Technology Center | Est. 2026
-</div>
+<div class="top-bar">Space Operations Center | Bryan, Texas</div>
 
 <header>
-    <div class="header-main">
-        <h1>TSTC | Bryan, Texas</h1>
-        <div style="font-size: 0.9em; opacity: 0.9;">Aerospace Technology & Small Rocketry Center</div>
+    <div class="logo">
+        <h1>TSTC Aerospace</h1>
+        <span>Technology & Small Rocketry Center</span>
     </div>
-    <div class="telemetry-font" style="color: var(--accent-gold); text-align: right;">
-        LAT: 30.6744° N<br>
-        LON: 96.3700° W
+    <div style="text-align:right; font-size: 12px;">
+        <strong>Lat:</strong> 30.6744° N | <strong>Lon:</strong> 96.3700° W<br>
+        <strong>Status:</strong> <span style="color:green">NOMINAL</span>
     </div>
 </header>
 
 <div class="disclaimer">
-    NOTICE: WE ARE NOT AFFILIATED WITH THE TEXAS STATE TECHNICAL COLLEGE
+    NON-AFFILIATION NOTICE: THIS ENTITY IS NOT PART OF THE TEXAS STATE TECHNICAL COLLEGE SYSTEM.
 </div>
 
 <nav id="main-nav">
-    <button class="active" onclick="showPage('dev-page')">Development</button>
-    <button onclick="showPage('roster-page')">Personnel</button>
+    <button class="active" onclick="showPage('home')">DEVELOPMENT TRACK</button>
+    <button onclick="showPage('roster')">COMMAND ROSTER</button>
+    <button onclick="showPage('contact')">CONTACT</button>
 </nav>
 
 <div class="container">
-    <div class="main-content">
-        
-        <div id="dev-page" class="page active">
-            <div class="content-box">
-                <div class="section-header">CORE DEVELOPMENT OBJECTIVES</div>
-                <div class="inner-padding">
-                    <p>Operating as an independent R&D group in Bryan, Texas, the center is currently executing two primary projects:</p>
-                    <ul>
-                        <li><strong>Basic Rocket Controller:</strong> Development of flight control logic and stabilization code for small-scale rocketry.</li>
-                        <li><strong>AstronomicalOS:</strong> Engineering a future-state operating system tailored for aerospace hardware systems.</li>
-                    </ul>
-                    <p>Current Operational Status: <span class="status-badge">ACTIVE - PHASE 1</span></p>
-                </div>
+    <main class="page-content">
+        <div id="home" class="page active">
+            <div class="content-hdr">ACTIVE DEVELOPMENT REGISTRY</div>
+            <div class="inner-content">
+                <p>The Bryan, Texas Aerospace Technology Center is currently executing the following engineering tracks:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Program ID</th>
+                            <th>Objective</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>RC-01</strong></td>
+                            <td>Coding a Basic Rocket Controller for flight stabilization.</td>
+                            <td style="color:green; font-weight:bold;">ACTIVE</td>
+                        </tr>
+                        <tr>
+                            <td><strong>AOS-X</strong></td>
+                            <td>Development of AstronomicalOS: A future-state operating system for aerospace hardware.</td>
+                            <td style="color:orange; font-weight:bold;">IN-PROGRESS</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
 
-        <div id="roster-page" class="page">
-            <div class="content-box">
-                <div class="section-header">LEADERSHIP & OPERATIONS COMMAND</div>
-                <div class="inner-padding">
-                    <table class="leadership-table">
-                        <thead>
-                            <tr>
-                                <th>Personnel</th>
-                                <th>Designation</th>
-                                <th>Department</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>Raphael J. Guzman</strong></td>
-                                <td>Founder / Lead Coder</td>
-                                <td>Tech Directorate</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Joab O. Flores</strong></td>
-                                <td>Co-Owner</td>
-                                <td>Operations</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Aaron Mallinson</strong></td>
-                                <td>Lead Manager</td>
-                                <td>Management</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Harley Norwood</strong></td>
-                                <td>Technology Manager</td>
-                                <td>Hardware Systems</td>
-                            </tr>
-                        </tbody>
-                    </table>
+        <div id="roster" class="page">
+            <div class="content-hdr">LEADERSHIP & PERSONNEL</div>
+            <div class="inner-content">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Designation</th>
+                            <th>Directorate</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>Raphael J. Guzman</strong></td><td>Founder / Lead Coder</td><td>Technology</td></tr>
+                        <tr><td><strong>Joab O. Flores</strong></td><td>Co-Owner</td><td>Operations</td></tr>
+                        <tr><td><strong>Aaron Mallinson</strong></td><td>Lead Manager</td><td>Management</td></tr>
+                        <tr><td><strong>Harley Norwood</strong></td><td>Technology Manager</td><td>Hardware</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="contact" class="page">
+            <div class="content-hdr">CONTACT COMMAND</div>
+            <div class="inner-content">
+                <div class="contact-card">
+                    <p>For research collaboration, data inquiries, or administrative matters, please use the secure uplink below:</p>
+                    <p><strong>Email:</strong> <a href="mailto:mechanicalastronomy@gmail.com">mechanicalastronomy@gmail.com</a></p>
+                    <p><strong>Location:</strong> Bryan, Texas Facility</p>
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="sidebar">
-        <div class="section-header">COMMUNICATIONS</div>
-        <p style="font-size: 0.85em;">For collaboration or inquiries regarding AstronomicalOS, contact center command:</p>
-        <a href="mailto:mechanicalastronomy@gmail.com" class="contact-btn">INITIATE CONTACT</a>
-        
-        <div style="margin-top: 20px; border-top: 1px solid #ccc; padding-top: 10px;">
-            <div style="font-size: 0.7em; color: #666; font-family: monospace;">
-                LOCATION: BRYAN, TX<br>
-                YEAR: 2026
-            </div>
-        </div>
-    </div>
+    </main>
 </div>
 
 <footer>
-    &copy; 2026 Bryan, Texas Aerospace Technology Center. <br>
-    Providing advanced aerospace solutions for a sustainable planet.
+    &copy; 2026 Bryan, Texas Aerospace Technology Center.<br>
+    Advancing small-scale aerospace for a sustainable planet.
 </footer>
 
 <script>
     function showPage(pageId) {
-        // Hide all pages
-        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-        // Deactivate all buttons
-        document.querySelectorAll('#main-nav button').forEach(b => b.classList.remove('active'));
-        // Show target page and activate button
+        document.querySelectorAll('.page').forEach(page => {
+            page.classList.remove('active');
+        });
+        document.querySelectorAll('#main-nav button').forEach(btn => {
+            btn.classList.remove('active');
+        });
         document.getElementById(pageId).classList.add('active');
         event.currentTarget.classList.add('active');
     }
