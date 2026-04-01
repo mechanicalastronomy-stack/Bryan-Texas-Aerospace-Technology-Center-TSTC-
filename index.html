@@ -3,309 +3,269 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TSTC | Bryan, TX Aerospace Technology Center</title>
+    <title>TSTC | Bryan Aerospace Technology Center</title>
     <style>
         :root {
             --nws-blue: #003366;
-            --nws-light-blue: #e6eff7;
-            --nws-border: #999999;
-            --nws-text: #000000;
-            --accent-gold: #ffcc00;
+            --nws-light: #e6eff7;
+            --nws-border: #999;
+            --nasa-red: #cc0000;
         }
 
         body {
             font-family: Arial, Helvetica, sans-serif;
-            background-color: white;
-            color: var(--nws-text);
-            margin: 0;
-            padding: 0;
-            line-height: 1.3;
+            margin: 0; padding: 0;
+            background: #fff;
+            color: #000;
+            line-height: 1.4;
         }
 
-        /* Top Government Banner */
-        .gov-header {
+        /* Top Agency Bar */
+        .top-bar {
             background: #000;
             color: #fff;
+            padding: 5px 20px;
             font-size: 11px;
-            padding: 4px 15px;
-            text-transform: uppercase;
             font-weight: bold;
+            text-transform: uppercase;
         }
 
-        /* Branding Header */
         header {
-            background-color: white;
-            padding: 10px 20px;
+            padding: 15px 20px;
+            border-bottom: 5px solid var(--nws-blue);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid var(--nws-border);
         }
 
-        .logo-area h1 {
-            color: var(--nws-blue);
-            margin: 0;
-            font-size: 24px;
-            letter-spacing: -1px;
-        }
+        .logo h1 { margin: 0; color: var(--nws-blue); font-size: 26px; }
+        .logo span { font-size: 14px; color: #555; display: block; }
 
-        .logo-area span {
-            font-size: 14px;
-            font-weight: normal;
-            display: block;
-            color: #444;
-        }
-
-        /* Yellow Disclaimer - Classic NWS Warning Style */
-        .disclaimer-bar {
+        /* The "Warning" Bar */
+        .disclaimer {
             background: #ffff00;
-            border-top: 1px solid #ccc;
-            border-bottom: 1px solid #ccc;
+            border-bottom: 1px solid var(--nws-border);
             text-align: center;
-            padding: 4px;
+            padding: 5px;
             font-size: 12px;
             font-weight: bold;
         }
 
-        /* Blue Navigation Strip */
         nav {
-            background-color: var(--nws-blue);
+            background: var(--nws-blue);
+            padding: 0 20px;
+            display: flex;
+        }
+
+        nav button {
+            background: none;
+            border: none;
             color: white;
-            padding: 5px 20px;
-            font-size: 13px;
+            padding: 12px 15px;
             font-weight: bold;
+            cursor: pointer;
+            font-size: 13px;
         }
 
-        .main-container {
-            max-width: 1100px;
-            margin: 15px auto;
+        nav button:hover { background: #004488; }
+        nav button.active { background: #fff; color: var(--nws-blue); }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
             display: grid;
-            grid-template-columns: 200px 1fr 250px;
-            gap: 15px;
-            padding: 0 10px;
+            grid-template-columns: 200px 1fr;
+            gap: 20px;
+            padding: 0 15px;
         }
 
-        /* Left Menu Column */
-        .left-nav {
-            font-size: 12px;
-        }
-
-        .menu-box {
+        /* Left Menu */
+        .side-menu { font-size: 12px; }
+        .menu-cat {
             border: 1px solid var(--nws-border);
             margin-bottom: 10px;
         }
-
-        .menu-title {
-            background: var(--nws-light-blue);
-            padding: 3px 8px;
+        .menu-hdr {
+            background: var(--nws-light);
+            padding: 5px;
             font-weight: bold;
             border-bottom: 1px solid var(--nws-border);
-            color: var(--nws-blue);
         }
+        .menu-links { padding: 8px; }
+        .menu-links a { display: block; color: var(--nws-blue); text-decoration: none; margin-bottom: 5px; }
+        .menu-links a:hover { text-decoration: underline; }
 
-        .menu-items {
-            padding: 5px 8px;
-        }
-
-        .menu-items a {
-            display: block;
-            text-decoration: none;
-            color: var(--nws-blue);
-            margin-bottom: 3px;
-        }
-
-        .menu-items a:hover {
-            text-decoration: underline;
-        }
-
-        /* Center Content - The "Forecast" Look */
-        .forecast-box {
+        /* Main Content Area */
+        .page-content {
             border: 1px solid var(--nws-blue);
+            min-height: 400px;
         }
-
-        .forecast-hdr {
+        .content-hdr {
             background: var(--nws-blue);
             color: white;
-            padding: 5px 10px;
+            padding: 8px 15px;
             font-weight: bold;
-            font-size: 14px;
+            font-size: 15px;
         }
+        .inner-content { padding: 20px; }
 
-        .forecast-body {
-            padding: 15px;
-        }
+        /* Hidden pages by default */
+        .page { display: none; }
+        .page.active { display: block; }
 
-        .status-pill {
-            background: #008000;
-            color: white;
-            padding: 2px 6px;
-            font-weight: bold;
-            font-size: 11px;
-        }
-
-        /* Leadership Table */
-        .roster-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-            font-size: 13px;
-        }
-
-        .roster-table th {
-            text-align: left;
-            background: #eee;
-            border: 1px solid var(--nws-border);
-            padding: 5px;
-        }
-
-        .roster-table td {
-            border: 1px solid var(--nws-border);
-            padding: 8px;
-        }
-
-        /* Sidebar/Command Box */
-        .command-box {
-            border: 1px solid #cc0000;
-            background: #fffcfc;
-        }
-
-        .command-hdr {
-            background: #cc0000;
-            color: white;
-            padding: 5px;
-            font-weight: bold;
-            font-size: 13px;
-        }
+        /* Data Table */
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th { background: #f0f0f0; text-align: left; border: 1px solid var(--nws-border); padding: 8px; font-size: 13px; }
+        td { border: 1px solid var(--nws-border); padding: 8px; font-size: 13px; }
 
         footer {
-            margin-top: 30px;
-            padding: 20px;
-            background: var(--nws-light-blue);
+            background: var(--nws-light);
             border-top: 1px solid var(--nws-border);
-            font-size: 11px;
+            padding: 20px;
             text-align: center;
-        }
-
-        .telemetry {
-            font-family: monospace;
             font-size: 11px;
-            background: #f0f0f0;
-            padding: 10px;
-            border: 1px inset #ccc;
+            margin-top: 40px;
         }
 
+        .contact-card {
+            border: 1px solid var(--nasa-red);
+            padding: 15px;
+            background: #fffcfc;
+        }
     </style>
 </head>
 <body>
 
-<div class="gov-header">
-    OFFICIAL PORTAL: BRYAN AEROSPACE TECHNOLOGY CENTER
-</div>
+<div class="top-bar">Space Operations Center | Bryan, Texas</div>
 
 <header>
-    <div class="logo-area">
-        <h1>TSTC Bryan Aerospace</h1>
-        <span>Small Rocketry & Software Research Center</span>
+    <div class="logo">
+        <h1>TSTC Aerospace</h1>
+        <span>Technology & Small Rocketry Center</span>
     </div>
-    <div style="text-align: right; font-size: 12px; font-weight: bold; color: var(--nws-blue);">
-        30.6744°N | 96.3700°W<br>
-        <span style="color: #666; font-weight: normal;">Current Status: ACTIVE</span>
+    <div style="text-align:right; font-size: 12px;">
+        <strong>Lat:</strong> 30.6744° N | <strong>Lon:</strong> 96.3700° W<br>
+        <strong>Status:</strong> <span style="color:green">NOMINAL</span>
     </div>
 </header>
 
-<nav>
-    HOME &nbsp;&nbsp; RESEARCH &nbsp;&nbsp; TELEMETRY &nbsp;&nbsp; SAFETY &nbsp;&nbsp; CONTACT
-</nav>
-
-<div class="disclaimer-bar">
-    NOTICE: This organization is not affiliated with the Texas State Technical College (TSTC) system.
+<div class="disclaimer">
+    NON-AFFILIATION NOTICE: THIS ENTITY IS NOT PART OF THE TEXAS STATE TECHNICAL COLLEGE SYSTEM.
 </div>
 
-<div class="main-container">
-    <div class="left-nav">
-        <div class="menu-box">
-            <div class="menu-title">Mission Info</div>
-            <div class="menu-items">
-                <a href="#">Center Overview</a>
-                <a href="#">Environmental Policy</a>
-                <a href="#">Current Projects</a>
-            </div>
-        </div>
-        <div class="menu-box">
-            <div class="menu-title">External Links</div>
-            <div class="menu-items">
-                <a href="#">NOAA Weather</a>
-                <a href="#">FAA Notices</a>
+<nav id="main-nav">
+    <button class="active" onclick="showPage('home')">CENTER HOME</button>
+    <button onclick="showPage('roster')">COMMAND ROSTER</button>
+    <button onclick="showPage('projects')">ACTIVE PROJECTS</button>
+    <button onclick="showPage('contact')">CONTACT</button>
+</nav>
+
+<div class="container">
+    <div class="side-menu">
+        <div class="menu-cat">
+            <div class="menu-hdr">Quick Links</div>
+            <div class="menu-links">
+                <a href="https://www.weather.gov" target="_blank">Local Weather</a>
+                <a href="https://www.nasa.gov" target="_blank">NASA.gov</a>
+                <a href="#">Flight Safety Docs</a>
             </div>
         </div>
     </div>
 
-    <div class="center-col">
-        <div class="forecast-box">
-            <div class="forecast-hdr">MISSION SUMMARY - BRYAN, TX</div>
-            <div class="forecast-body">
-                <p><strong>Operational Status:</strong> <span class="status-pill">PHASE 1 - OPERATIONAL</span></p>
-                <p>The Bryan, Texas Aerospace Technology Center is an independent research group dedicated to small-scale rocketry and the development of specialized aerospace software systems.</p>
-                
-                <table class="roster-table">
+    <main class="page-content">
+        <div id="home" class="page active">
+            <div class="content-hdr">MISSION OVERVIEW</div>
+            <div class="inner-content">
+                <p><strong>The Bryan, Texas Aerospace Technology Center</strong> is an independent research and development organization established in 2026.</p>
+                <p>We focus on the advancement of small-scale rocketry and aerospace software systems. Our facility operates with a primary directive of zero environmental degradation, ensuring that the next generation of space technology is built sustainably.</p>
+                <h3>Operational Focus:</h3>
+                <ul>
+                    <li>Small-scale propulsion testing</li>
+                    <li>High-altitude recovery systems</li>
+                    <li>Sustainable aerospace materials</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="roster" class="page">
+            <div class="content-hdr">LEADERSHIP & PERSONNEL</div>
+            <div class="inner-content">
+                <table>
                     <thead>
                         <tr>
-                            <th>Personnel</th>
+                            <th>Name</th>
                             <th>Designation</th>
                             <th>Directorate</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td><strong>Raphael J. Guzman</strong></td>
-                            <td>Founder / Lead Coder</td>
-                            <td>Technology</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Joab O. Flores</strong></td>
-                            <td>Co-Owner</td>
-                            <td>Operations</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Aaron Mallinson</strong></td>
-                            <td>Lead Manager</td>
-                            <td>Management</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Harley Norwood</strong></td>
-                            <td>Technology Manager</td>
-                            <td>Hardware</td>
-                        </tr>
+                        <tr><td><strong>Raphael J. Guzman</strong></td><td>Founder / Lead Coder</td><td>Technology</td></tr>
+                        <tr><td><strong>Joab O. Flores</strong></td><td>Co-Owner</td><td>Operations</td></tr>
+                        <tr><td><strong>Aaron Mallinson</strong></td><td>Lead Manager</td><td>Management</td></tr>
+                        <tr><td><strong>Harley Norwood</strong></td><td>Technology Manager</td><td>Hardware</td></tr>
                     </tbody>
                 </table>
             </div>
         </div>
-    </div>
 
-    <div class="right-nav">
-        <div class="command-box">
-            <div class="command-hdr">COMMUNICATIONS COMMAND</div>
-            <div style="padding: 10px; font-size: 12px;">
-                Direct inquiries to Center Command via secure link:<br><br>
-                <a href="mailto:mechanicalastronomy@gmail.com" style="color: #cc0000; font-weight: bold;">[ INITIATE CONTACT ]</a>
+        <div id="projects" class="page">
+            <div class="content-hdr">CURRENT PROJECT REGISTRY</div>
+            <div class="inner-content">
+                <p>Ongoing research initiatives within the Bryan Technology Center:</p>
+                <table>
+                    <tr>
+                        <th>Project ID</th>
+                        <th>Description</th>
+                        <th>Status</th>
+                    </tr>
+                    <tr>
+                        <td>SR-1</td>
+                        <td>Small Rocketry Propulsion Analysis</td>
+                        <td style="color:green; font-weight:bold;">Active</td>
+                    </tr>
+                    <tr>
+                        <td>AS-01</td>
+                        <td>Aerospace Management Software</td>
+                        <td style="color:orange; font-weight:bold;">Pending Review</td>
+                    </tr>
+                </table>
             </div>
         </div>
 
-        <div style="margin-top: 15px;">
-            <div class="menu-title" style="font-size: 11px;">System Logs</div>
-            <div class="telemetry">
-                > OS_DEV: STABLE<br>
-                > LOC: BRYAN_TX<br>
-                > EPOCH: 2026
+        <div id="contact" class="page">
+            <div class="content-hdr">CONTACT COMMAND</div>
+            <div class="inner-content">
+                <div class="contact-card">
+                    <p>For research collaboration, data inquiries, or administrative matters, please use the secure uplink below:</p>
+                    <p><strong>Email:</strong> <a href="mailto:mechanicalastronomy@gmail.com">mechanicalastronomy@gmail.com</a></p>
+                    <p><strong>Location:</strong> Bryan, Texas Facility</p>
+                </div>
             </div>
         </div>
-    </div>
+    </main>
 </div>
 
 <footer>
-    Bryan, Texas Aerospace Technology Center (Est. 2026)<br>
-    Providing advanced aerospace solutions for a sustainable planet.
+    &copy; 2026 Bryan, Texas Aerospace Technology Center.<br>
+    Advancing small-scale aerospace for a sustainable planet.
 </footer>
+
+<script>
+    function showPage(pageId) {
+        // Hide all pages
+        document.querySelectorAll('.page').forEach(page => {
+            page.classList.remove('active');
+        });
+        // Remove active class from nav buttons
+        document.querySelectorAll('#main-nav button').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        // Show selected page
+        document.getElementById(pageId).classList.add('active');
+        // Set button to active (using event target logic)
+        event.currentTarget.classList.add('active');
+    }
+</script>
 
 </body>
 </html>
