@@ -73,10 +73,27 @@
         .container {
             max-width: 1200px;
             margin: 20px auto;
-            /* Removed sidebar column from grid */
-            display: block; 
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 20px;
             padding: 0 15px;
         }
+
+        /* Left Menu */
+        .side-menu { font-size: 12px; }
+        .menu-cat {
+            border: 1px solid var(--nws-border);
+            margin-bottom: 10px;
+        }
+        .menu-hdr {
+            background: var(--nws-light);
+            padding: 5px;
+            font-weight: bold;
+            border-bottom: 1px solid var(--nws-border);
+        }
+        .menu-links { padding: 8px; }
+        .menu-links a { display: block; color: var(--nws-blue); text-decoration: none; margin-bottom: 5px; }
+        .menu-links a:hover { text-decoration: underline; }
 
         /* Main Content Area */
         .page-content {
@@ -137,38 +154,34 @@
 </div>
 
 <nav id="main-nav">
-    <button class="active" onclick="showPage('home')">DEVELOPMENT TRACK</button>
+    <button class="active" onclick="showPage('home')">CENTER HOME</button>
     <button onclick="showPage('roster')">COMMAND ROSTER</button>
+    <button onclick="showPage('projects')">ACTIVE PROJECTS</button>
     <button onclick="showPage('contact')">CONTACT</button>
 </nav>
 
 <div class="container">
+    <div class="side-menu">
+        <div class="menu-cat">
+            <div class="menu-hdr">Quick Links</div>
+            <div class="menu-links">
+                <a href="https://www.weather.gov" target="_blank">Local Weather</a>
+                <a href="https://www.nasa.gov" target="_blank">NASA.gov</a>
+                <a href="#">Flight Safety Docs</a>
+            </div>
+        </div>
+    </div>
+
     <main class="page-content">
         <div id="home" class="page active">
-            <div class="content-hdr">ACTIVE DEVELOPMENT REGISTRY</div>
+            <div class="content-hdr">MISSION OVERVIEW</div>
             <div class="inner-content">
-                <p>The Bryan, Texas Aerospace Technology Center is currently executing the following engineering tracks:</p>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Program ID</th>
-                            <th>Objective</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>RC-01</strong></td>
-                            <td>Coding a Basic Rocket Controller for flight stabilization.</td>
-                            <td style="color:green; font-weight:bold;">ACTIVE</td>
-                        </tr>
-                        <tr>
-                            <td><strong>AOS-X</strong></td>
-                            <td>Development of AstronomicalOS: A future-state operating system for aerospace hardware.</td>
-                            <td style="color:orange; font-weight:bold;">IN-PROGRESS</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <p><strong>The Bryan, Texas Aerospace Technology Center</strong> is an independent research and development organization established in 2026.</p>
+                <h3>Current Development Tracks:</h3>
+                <ul>
+                    <li><strong>Basic Rocket Controller:</strong> Implementation of flight control systems for small-scale rocketry.</li>
+                    <li><strong>AstronomicalOS:</strong> Engineering a future aerospace operating system.</li>
+                </ul>
             </div>
         </div>
 
@@ -193,11 +206,33 @@
             </div>
         </div>
 
+        <div id="projects" class="page">
+            <div class="content-hdr">CURRENT PROJECT REGISTRY</div>
+            <div class="inner-content">
+                <table>
+                    <tr>
+                        <th>Project ID</th>
+                        <th>Description</th>
+                        <th>Status</th>
+                    </tr>
+                    <tr>
+                        <td>RC-01</td>
+                        <td>Basic Rocket Controller</td>
+                        <td style="color:green; font-weight:bold;">Active</td>
+                    </tr>
+                    <tr>
+                        <td>AOS-01</td>
+                        <td>AstronomicalOS</td>
+                        <td style="color:orange; font-weight:bold;">In-Development</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
         <div id="contact" class="page">
             <div class="content-hdr">CONTACT COMMAND</div>
             <div class="inner-content">
                 <div class="contact-card">
-                    <p>For research collaboration, data inquiries, or administrative matters, please use the secure uplink below:</p>
                     <p><strong>Email:</strong> <a href="mailto:mechanicalastronomy@gmail.com">mechanicalastronomy@gmail.com</a></p>
                     <p><strong>Location:</strong> Bryan, Texas Facility</p>
                 </div>
