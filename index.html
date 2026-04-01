@@ -3,110 +3,254 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bryan, Texas Aerospace Technology Center</title>
+    <title>TSTC | Bryan, TX Aerospace Technology Center</title>
     <style>
+        :root {
+            --nws-blue: #003366;
+            --nws-light-bg: #f0f0f0;
+            --nws-border: #cccccc;
+            --space-black: #05070a;
+            --accent-gold: #ffcc00; /* Common in mission badges */
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #e0e0e0;
-            background-color: #0b0d17;
+            font-family: Arial, Helvetica, sans-serif; /* NWS uses standard web-safe fonts */
+            line-height: 1.4;
+            color: #333;
+            background-color: white;
             margin: 0;
             padding: 0;
         }
-        header {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1500&q=80');
-            background-size: cover;
+
+        /* NWS Style Top Bar */
+        .gov-banner {
+            background: #000;
             color: white;
-            padding: 60px 20px;
-            text-align: center;
-            border-bottom: 3px solid #3a4b8c;
+            font-size: 11px;
+            padding: 5px 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px solid #333;
         }
-        .container {
-            max-width: 900px;
-            margin: auto;
+
+        header {
+            background-color: var(--nws-blue);
+            color: white;
             padding: 20px;
+            border-bottom: 4px solid var(--accent-gold);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
+
+        .header-main h1 {
+            margin: 0;
+            font-size: 1.8em;
+            font-weight: bold;
+            letter-spacing: -0.5px;
+        }
+
         .disclaimer {
-            font-size: 0.8em;
-            color: #888;
-            margin-top: 10px;
+            background: #ffeb3b;
+            color: #000;
+            padding: 5px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 0.75em;
+            text-transform: uppercase;
         }
-        .section {
-            background: #161b22;
-            padding: 30px;
-            margin-top: 20px;
-            border-radius: 8px;
-            border: 1px solid #30363d;
-        }
-        h1 { margin: 0; font-size: 2.5em; color: #ffffff; }
-        h2 { color: #58a6ff; border-bottom: 1px solid #30363d; padding-bottom: 10px; }
-        .member-list {
+
+        .container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
+            grid-template-columns: 3fr 1fr; /* Dashboard layout */
+            max-width: 1200px;
+            margin: 20px auto;
+            gap: 20px;
+            padding: 0 15px;
         }
-        .member-card {
-            background: #0d1117;
+
+        .main-content {
+            background: white;
+        }
+
+        .sidebar {
+            background: #f7f7f7;
+            border: 1px solid var(--nws-border);
             padding: 15px;
-            border-radius: 5px;
-            border-left: 4px solid #58a6ff;
+            height: fit-content;
         }
-        .contact-btn {
+
+        .section-header {
+            background: var(--nws-blue);
+            color: white;
+            padding: 8px 12px;
+            font-size: 1.1em;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .content-box {
+            border: 1px solid var(--nws-border);
+            margin-bottom: 20px;
+            background: #fff;
+        }
+
+        .inner-padding {
+            padding: 15px;
+        }
+
+        /* Leadership Cards - Table style for a more 'official' look */
+        table.leadership-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9em;
+        }
+
+        .leadership-table th, .leadership-table td {
+            text-align: left;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .leadership-table th {
+            background: #f2f2f2;
+            color: #555;
+            text-transform: uppercase;
+            font-size: 0.8em;
+        }
+
+        .status-badge {
             display: inline-block;
             background: #238636;
             color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-top: 10px;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 10px;
+            font-family: 'Courier New', Courier, monospace;
         }
-        footer { text-align: center; padding: 40px; color: #666; font-size: 0.9em; }
+
+        .contact-btn {
+            display: block;
+            background: var(--nws-blue);
+            color: white;
+            padding: 10px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 10px;
+            border-radius: 2px;
+        }
+
+        .contact-btn:hover {
+            background: #004488;
+        }
+
+        footer {
+            background: #333;
+            color: #ccc;
+            padding: 30px;
+            text-align: center;
+            font-size: 0.8em;
+            margin-top: 50px;
+        }
+
+        /* Monospace for that 'Space Tech' feel */
+        .telemetry-font {
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            color: #006400;
+        }
+
     </style>
 </head>
 <body>
 
+<div class="gov-banner">
+    Official Portal: TSTC Aerospace Technology Center | Est. 2026
+</div>
+
 <header>
-    <h1>Bryan, Texas Aerospace Technology Center (TSTC)</h1>
-    <div class="disclaimer">(WE ARE NOT AFFILIATED WITH THE Texas State Technical College)</div>
+    <div class="header-main">
+        <h1>TSTC | Bryan, Texas</h1>
+        <div style="font-size: 0.9em; opacity: 0.9;">Aerospace Technology & Small Rocketry Center</div>
+    </div>
+    <div class="telemetry-font" style="color: var(--accent-gold); text-align: right;">
+        LAT: 30.6744° N<br>
+        LON: 96.3700° W
+    </div>
 </header>
 
-<div class="container">
-    <div class="section">
-        <h2>About Us</h2>
-        <p>Created in 2026, the <strong>Bryan, Texas Aerospace Technology Center</strong> is a specialized space group dedicated to technology and small rocketry. We focus on hands-on engineering, coding, and the future of flight in Bryan, Texas.</p>
-    </div>
+<div class="disclaimer">
+    NOTICE: WE ARE NOT AFFILIATED WITH THE TEXAS STATE TECHNICAL COLLEGE
+</div>
 
-    <div class="section">
-        <h2>Our Leadership Team</h2>
-        <div class="member-list">
-            <div class="member-card">
-                <strong>Raphael J. Guzman</strong><br>
-                Founder, Lead Tech Director & Lead Coder
+<div class="container">
+    <div class="main-content">
+        <div class="content-box">
+            <div class="section-header">MISSION SUMMARY</div>
+            <div class="inner-padding">
+                <p>Created in 2026, the <strong>Bryan, Texas Aerospace Technology Center</strong> operates as an independent research and development group. Our mission is to advance small-scale rocketry and aerospace software systems without environmental degradation.</p>
+                <p>Current Operational Status: <span class="status-badge">ACTIVE - PHASE 1</span></p>
             </div>
-            <div class="member-card">
-                <strong>Joab O. Flores</strong><br>
-                Co-Owner
-            </div>
-            <div class="member-card">
-                <strong>Aaron Mallinson</strong><br>
-                Lead Manager
-            </div>
-            <div class="member-card">
-                <strong>Harley Norwood</strong><br>
-                Technology Manager
+        </div>
+
+        <div class="content-box">
+            <div class="section-header">LEADERSHIP & OPERATIONS COMMAND</div>
+            <div class="inner-padding">
+                <table class="leadership-table">
+                    <thead>
+                        <tr>
+                            <th>Personnel</th>
+                            <th>Designation</th>
+                            <th>Department</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Raphael J. Guzman</strong></td>
+                            <td>Founder / Lead Coder</td>
+                            <td>Tech Directorate</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Joab O. Flores</strong></td>
+                            <td>Co-Owner</td>
+                            <td>Operations</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Aaron Mallinson</strong></td>
+                            <td>Lead Manager</td>
+                            <td>Management</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Harley Norwood</strong></td>
+                            <td>Technology Manager</td>
+                            <td>Hardware Systems</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
 
-    <div class="section">
-        <h2>Contact & Inquiries</h2>
-        <p>Interested in joining or collaborating with our team?</p>
-        <a href="mailto:mechanicalastronomy@gmail.com" class="contact-btn">Email the Center</a>
+    <div class="sidebar">
+        <div class="section-header">COMMUNICATIONS</div>
+        <p style="font-size: 0.85em;">For collaboration, data inquiries, or media, contact the center command:</p>
+        <a href="mailto:mechanicalastronomy@gmail.com" class="contact-btn">INITIATE CONTACT</a>
+        
+        <div style="margin-top: 20px; border-top: 1px solid #ccc; padding-top: 10px;">
+            <div style="font-size: 0.7em; color: #666; font-family: monospace;">
+                SYSTEM_LOG:<br>
+                > OS DEVELOPMENT: IN PROGRESS<br>
+                > LOCATION: BRYAN, TX<br>
+                > YEAR: 2026
+            </div>
+        </div>
     </div>
 </div>
 
 <footer>
-    &copy; 2026 Bryan, Texas Aerospace Technology Center. Thanks for checking out our Group.
+    &copy; 2026 Bryan, Texas Aerospace Technology Center. <br>
+    Providing advanced aerospace solutions for a sustainable planet.
 </footer>
 
 </body>
